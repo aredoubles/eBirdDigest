@@ -16,7 +16,7 @@ The eBird Digest allows for a more personalized digest of relevant information.
 
 * User manually creates a list of targets in `targets.csv`
 * The `eBirdDigest.py` script finds sightings of those targets in the past day
-* The script then lists those sightings in an HTML file, [which can be viewed as a website](todaysdigest.html)
+* The script then lists those sightings in an HTML file, `todaysdigest.html`
     * If the location is a hotspot, a link to the hotspot's eBird page is provided. If not, a link to Apple Maps is provided (Google Maps implementation is in the code as well, commented out)
 
 ## To do
