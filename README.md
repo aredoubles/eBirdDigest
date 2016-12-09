@@ -15,13 +15,14 @@ The eBird Digest allows for a more personalized digest of relevant information.
 ## Current progress
 
 * User manually creates a list of targets in `targets.csv`
-* The `eBirdDigest.py` script finds sightings of those targets in the past day
+* The `eBirdDigest.py` script finds sightings of those targets in the past two days
 * The script then lists those sightings in an HTML file, `todaysdigest.html`
     * If the location is a hotspot, a link to the hotspot's eBird page is provided. If not, a link to Apple Maps is provided (Google Maps implementation is in the code as well, commented out)
+* The script runs each morning at 4am.
+    * Run in using `nohup python3 eBirdDigest.py &` to allow it to run in the background without hanging the main thread.
 
 ## To do
 
-* Schedule the script to run at certain times each day, for instance generating a fresh new digest each morning
 * Two options for digest presentation:
     * Send an email to the user
     * Host a website that refreshes each day (and on-demand as well?)

@@ -2,6 +2,8 @@ from ebird import AvianKnowledge
 from ebird import EBird
 import pandas as pd
 import pypandoc
+import schedule
+import time
 
 ak = AvianKnowledge()
 ebird = EBird()
@@ -57,6 +59,11 @@ def eBirdLookup(targets):
             todaysum = sppdf
         else:
             todaysum = pd.concat([todaysum, sppdf])
+
+    # Append notable sightings
+    # Start with just MA for now, expand maybe to all states present in targets.csv?
+    notas = ebird.recent_notable_observations_region('subnational1', 'US-MA')
+    rba = pd.DataFrame(notas)
 
     return todaysum
 
@@ -133,7 +140,12 @@ def main():
     # EmailDigest(newdoc)
     #todaysum.to_csv('todaysum.csv')
 
-main()
+#main()
+
+schedule.every().day.at('04:00').do(main)
+while True:
+    schedule.run_pending()
+    time.sleep(360)
 
 
 '''
